@@ -20,7 +20,7 @@ h4{
 }
 
 body{
-    background-image: linear-gradient(to right, rgb(134, 194, 134), rgb(222, 238, 222));
+    background-image: linear-gradient(to left, rgb(134, 194, 134), rgb(173, 209, 173));
 }
 
 .product-button {
@@ -62,7 +62,7 @@ form{
 }
 
 .products-list{
-    background-image: linear-gradient(to right, rgb(56, 63, 152), rgb(130, 134, 189));
+    background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
     width: 1150px;
@@ -93,7 +93,7 @@ div{
 p{
     text-align: center;
     font-size: 50px;
-    color: rgb(115, 198, 195);
+    color: rgb(29, 113, 110);
     font-family: Arial, Helvetica, sans-serif;
 }
 
