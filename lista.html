@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./lista.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.css">
     <script src="./lista.js" defer></script>
     <title>Lista de compras</title>
   </head>
@@ -17,17 +18,14 @@
       <input
         type="text"
         id="product-input"
-        size="40"
+        maxlength="40"
         placeholder="Digite o nome do produto aqui"
       />
       <button class="product-button" type="submit">Inserir</button>
     </form>
     <div class="products-list">
       <h3 id="title-list">Lista de compras</h3>
-      <ul class="product-check-box">
-        <li><span class="fa-li"><i class="fa-solid fa-check-square"></i></span>Produto 1</li>
-        
-      </ul>
+      <ul class="product-check-box"></ul>
     </div>
     <div class="total-list">
       <h4>Total das compras:</h3>

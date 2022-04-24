@@ -61,27 +61,11 @@ form{
     text-align: center;
 }
 
-.products-list{
-    background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
-    border-radius: 10px;
-    box-shadow: 0 0 1em rgb(57, 49, 6);
-    width: 1150px;
-    height: 600px;
-    margin-left: 200px;
-}
-
 h3#title-list{
     margin: 30px;
     text-align: left;
     font-size: 30px;
     color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-ul.product-check-box{
-    margin: 30px;
-    font-size: 25px;
-    color: rgb(115, 198, 195);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -106,4 +90,78 @@ p{
     width: 400px;
     height: 300px;
     margin-left: -40px;
+}
+
+.products-list{
+    background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 1150px;
+    height: 600px;
+    margin-left: 200px;
+}
+
+.product-check-box{
+    min-width: 30%;
+    margin: 30px;
+    font-size: 25px;
+    color: rgb(115, 198, 195);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.checked-product{
+
+    background-color: rgb(72, 179, 72);
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 7px;
+    box-shadow: 0 0 0.2em rgb(57, 49, 6);
+}
+
+.remove-product{
+
+    background-color: rgb(186, 68, 68);
+    padding: 7px;
+    width: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 0 0.2em rgb(57, 49, 6);
+    margin-left: 5px;
+}
+
+.product{
+    list-style: none;
+    margin: 30px;
+    color: rgb(169, 203, 206);
+    font-size: 25px;
+    display: flex;
+
+}
+
+.product-unit{
+    padding: 2px;
+}
+
+.fa-check, .fa-xmark{
+    pointer-events: none;
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+.adviseProduct{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+    height: 180px;
+    padding: 15px;
+    border: solid 1px green;
+    background: blue;
+
 }
