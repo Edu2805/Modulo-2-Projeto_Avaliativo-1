@@ -2,11 +2,13 @@
 const productInput = document.querySelector("#product-input");
 const insertButton = document.querySelector(".product-button");
 const productList = document.querySelector(".products-list");
+//const insertPriceContainer = document.querySelector(".checked-product");
 
 //Eventos
 document.addEventListener("DOMContentLoaded", getProducts);
 insertButton.addEventListener("click", addProduct);
 productList.addEventListener("click", deleteProduct);
+//insertPriceContainer.addEventListener("click", showPriceArea());
 
 //Funções
 function addProduct(event) {
@@ -19,6 +21,7 @@ function addProduct(event) {
   checkBoxProduct.innerHTML = '<i class="fa-solid fa-check"></i>';
   checkBoxProduct.classList.add("checked-product");
   productDiv.appendChild(checkBoxProduct);
+//   showPriceArea();
 
   const removeProduct = document.createElement("button");
   removeProduct.innerHTML = '<i class="fa-solid fa-xmark"></i>';
@@ -26,13 +29,15 @@ function addProduct(event) {
   productDiv.appendChild(removeProduct);
 
   if (productInput.value === "") {
-      const adviseEmptyProduct = document.createElement("div");
-      const adviseEmptyProductSpan = document.createElement("span");
-      adviseEmptyProductSpan.innerHTML = '<i > TESTE</i>';
-      adviseEmptyProductSpan.classList.add("adviseProduct");
-      adviseEmptyProduct.appendChild(adviseEmptyProductSpan);
+
+    var emptyMessage = "O campo produto não pode estar vazio";
+    var element = document.querySelector('.modal-empty-text');
+    var message = document.querySelector('.modal-empty-text-message');
+    element.classList.add('show-modal-empty-text'); 
+    message.innerText = emptyMessage;
 
   } else {
+
     const newProduct = document.createElement("li");
     newProduct.innerText = productInput.value;
     newProduct.classList.add("product-unit");
@@ -123,3 +128,20 @@ function removeProductLocal(product) {
 
   localStorage.setItem("addProducts", JSON.stringify(addProducts));
 }
+
+function hidenModalAdvice(){
+    var element = document.querySelector('.modal-empty-text');
+    element.classList.remove('show-modal-empty-text'); 
+}
+
+// function showPriceArea(){
+    
+//     var element = document.querySelector('.insert-price-container');
+//     element.classList.add('.show-price-area');
+//     console.log(element);
+// }
+
+// function writeItAdviceEmptyText(text){
+//     var element = "O nome do produto não pode estar vazio."
+//     document.write(element);
+// }
