@@ -1,0 +1,109 @@
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h2{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h4{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(77, 55, 198);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-image: linear-gradient(to right, rgb(134, 194, 134), rgb(222, 238, 222));
+}
+
+.product-button {
+    padding: 8px 50px 8px 50px;
+    font-size: 2rem;
+    border: none;
+    background: rgb(77, 55, 198);
+    border-radius: 10px;
+    color: white;
+    box-shadow:0 5px 0 #006000;
+    cursor: pointer;
+}
+
+.product-button:hover{
+    background:#006000;
+    box-shadow:0 5px 0 #003f00;
+}
+
+.product-button:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
+#product-input{
+    width: 600px;
+    border: 2px;
+    border-style: solid;
+    border-color: rgb(49, 49, 183);
+    border-radius: 7px;
+    max-height:150px;
+    padding: 8px 2px 8px 2px;
+    font-size: 30px;
+    text-align: left;
+}
+
+form{
+    text-align: center;
+}
+
+.products-list{
+    background-image: linear-gradient(to right, rgb(56, 63, 152), rgb(130, 134, 189));
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 1150px;
+    height: 600px;
+    margin-left: 200px;
+}
+
+h3#title-list{
+    margin: 30px;
+    text-align: left;
+    font-size: 30px;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ul.product-check-box{
+    margin: 30px;
+    font-size: 25px;
+    color: rgb(115, 198, 195);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+div{
+    display: inline-block;
+    margin-top: 50px;
+}
+
+p{
+    text-align: center;
+    font-size: 50px;
+    color: rgb(115, 198, 195);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.total-list{
+
+    backdrop-filter: blur(8px);
+    vertical-align: top;
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 400px;
+    height: 300px;
+    margin-left: -40px;
+}
