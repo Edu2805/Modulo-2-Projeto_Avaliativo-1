@@ -2,7 +2,6 @@
 const productInput = document.querySelector("#product-input");
 const insertButton = document.querySelector(".product-button");
 const productList = document.querySelector(".products-list");
-//const insertPriceContainer = document.querySelector(".checked-product");
 
 //Eventos
 document.addEventListener("DOMContentLoaded", getProducts);
@@ -21,7 +20,6 @@ function addProduct(event) {
   checkBoxProduct.innerHTML = '<i class="fa-solid fa-check"></i>';
   checkBoxProduct.classList.add("checked-product");
   productDiv.appendChild(checkBoxProduct);
-//   showPriceArea();
 
   const removeProduct = document.createElement("button");
   removeProduct.innerHTML = '<i class="fa-solid fa-xmark"></i>';
@@ -51,6 +49,16 @@ function addProduct(event) {
     productInput.value = "";
   }
 }
+
+const clickButtonCheck = document.querySelector(".checked-product");
+
+clickButtonCheck.addEventListener('click', showPriceArea);
+
+  function showPriceArea(){
+      clickButtonCheck.classList.toggle('.show-price-area')
+  }
+
+  console.log(clickButtonCheck);
 
 function deleteProduct(event) {
   const productItem = event.target;
@@ -137,8 +145,9 @@ function hidenModalAdvice(){
 // function showPriceArea(){
     
 //     var element = document.querySelector('.insert-price-container');
-//     element.classList.add('.show-price-area');
-//     console.log(element);
+//     element.classList.add('.title-price');
+//     element.classList.add('show-price-area'); 
+//     // element.innerText = 
 // }
 
 // function writeItAdviceEmptyText(text){
