@@ -77,7 +77,7 @@ function deleteProduct(event) {
       
 
       //após apertar o botão, se estiver vazio
-      if (!productPrice) {
+      if (!productPrice) { // verificar se igual a zero
         //document.querySelector(".show-price-area").classList.add("insert-price-container");
         var emptyMessage = "O campo preço não pode estar vazio";
         var element = document.querySelector(".modal-empty-text");
