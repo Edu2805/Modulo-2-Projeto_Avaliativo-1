@@ -2,12 +2,16 @@
 const productInput = document.querySelector("#product-input");
 const insertButton = document.querySelector(".product-button");
 const productList = document.querySelector(".products-list");
+const priceInput = document.querySelector("#price-input");
+const priceButton = document.querySelector(".price-button");
+
+var totalValue = 0;
 
 //Eventos
 document.addEventListener("DOMContentLoaded", getProducts);
 insertButton.addEventListener("click", addProduct);
 productList.addEventListener("click", deleteProduct);
-//insertPriceContainer.addEventListener("click", showPriceArea());
+//priceButton.addEventListener("click", deleteProduct);
 
 //Funções
 function addProduct(event) {
@@ -26,16 +30,15 @@ function addProduct(event) {
   removeProduct.classList.add("remove-product");
   productDiv.appendChild(removeProduct);
 
-  if (productInput.value === "") {
+  const productName = productInput.value.trim();
 
+  if (!productName) {
     var emptyMessage = "O campo produto não pode estar vazio";
-    var element = document.querySelector('.modal-empty-text');
-    var message = document.querySelector('.modal-empty-text-message');
-    element.classList.add('show-modal-empty-text'); 
+    var element = document.querySelector(".modal-empty-text");
+    var message = document.querySelector(".modal-empty-text-message");
+    element.classList.add("show-modal-empty-text");
     message.innerText = emptyMessage;
-
   } else {
-
     const newProduct = document.createElement("li");
     newProduct.innerText = productInput.value;
     newProduct.classList.add("product-unit");
@@ -50,16 +53,6 @@ function addProduct(event) {
   }
 }
 
-const clickButtonCheck = document.querySelector(".checked-product");
-
-clickButtonCheck.addEventListener('click', showPriceArea);
-
-  function showPriceArea(){
-      clickButtonCheck.classList.toggle('.show-price-area')
-  }
-
-  console.log(clickButtonCheck);
-
 function deleteProduct(event) {
   const productItem = event.target;
 
@@ -70,8 +63,33 @@ function deleteProduct(event) {
   }
 
   if (productItem.classList[0] === "checked-product") {
+    //mostra popup digita preço
+    document
+      .querySelector(".insert-price-container")
+      .classList.add("show-price-area");
     const productParent = productItem.parentElement;
     productParent.classList.toggle("completed");
+ 
+    //primeiro digita, depois verifica...
+    const productPrice = priceInput.value.trim();
+    if(productPrice){
+      //lógica de digitar o preço
+      
+
+      //após apertar o botão, se estiver vazio
+      if (!productPrice) {
+        //document.querySelector(".show-price-area").classList.add("insert-price-container");
+        var emptyMessage = "O campo preço não pode estar vazio";
+        var element = document.querySelector(".modal-empty-text");
+        var message = document.querySelector(".modal-empty-text-message");
+        element.classList.add("show-modal-empty-text");
+        message.innerText = emptyMessage;
+      } else {
+        //lógica para atribuir preço ao produto e somar ao total...
+      }
+    }
+    
+    
   }
 }
 
@@ -137,17 +155,17 @@ function removeProductLocal(product) {
   localStorage.setItem("addProducts", JSON.stringify(addProducts));
 }
 
-function hidenModalAdvice(){
-    var element = document.querySelector('.modal-empty-text');
-    element.classList.remove('show-modal-empty-text'); 
+function hidenModalAdvice() {
+  var element = document.querySelector(".modal-empty-text");
+  element.classList.remove("show-modal-empty-text");
 }
 
 // function showPriceArea(){
-    
+
 //     var element = document.querySelector('.insert-price-container');
 //     element.classList.add('.title-price');
-//     element.classList.add('show-price-area'); 
-//     // element.innerText = 
+//     element.classList.add('show-price-area');
+//     // element.innerText =
 // }
 
 // function writeItAdviceEmptyText(text){
