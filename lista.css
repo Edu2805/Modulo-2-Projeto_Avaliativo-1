@@ -46,7 +46,7 @@ body{
 }
 
 #product-input{
-    width: 600px;
+    width: 60%;
     border: 2px;
     border-style: solid;
     border-color: rgb(49, 49, 183);
@@ -87,7 +87,7 @@ p{
     vertical-align: top;
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
-    width: 400px;
+    width: 30%;
     height: 300px;
     margin-left: -40px;
     margin-top: 29px;
@@ -97,9 +97,9 @@ p{
     background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
-    width: 1150px;
+    width: 60%;
     height: 600px;
-    margin-left: 200px;
+    margin-left: 150px;
 }
 
 .product-check-box{
@@ -172,8 +172,8 @@ p{
 .model-content-empty-text{
 
     position: relative;
-    margin-top: 300px;
-    margin-left: 700px;
+    margin-top: 20%;
+    margin-left: 40%;
     width: 250px;
     height: 100px;
     background-image: linear-gradient(to left, rgb(134, 194, 134), rgb(173, 209, 173));
@@ -235,8 +235,8 @@ p{
 .insert-price{
 
     position: relative;
-    margin-top: 300px;
-    margin-left: 700px;
+    margin-top: 20%;
+    margin-left: 40%;
     width: 250px;
     height: 100px;
     background-image: linear-gradient(to left, rgb(134, 194, 134), rgb(173, 209, 173));
@@ -270,6 +270,16 @@ p{
 #price-input{
     position: relative;
     margin: auto;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
 }
 
 .price-button {

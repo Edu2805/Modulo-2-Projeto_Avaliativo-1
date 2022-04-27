@@ -4,14 +4,18 @@ const insertButton = document.querySelector(".product-button");
 const productList = document.querySelector(".products-list");
 const priceInput = document.querySelector("#price-input");
 const priceButton = document.querySelector(".price-button");
+var totalValue = document.querySelector("p");
 
-var totalValue = 0;
+var initialValue = parseFloat(0);
+totalValue.innerText = "R$ " + initialValue.toFixed(2);
+var totalValueList = 0;
+var totalFinalValueList = 0;
 
 //Eventos
 document.addEventListener("DOMContentLoaded", getProducts);
 insertButton.addEventListener("click", addProduct);
 productList.addEventListener("click", deleteProduct);
-//priceButton.addEventListener("click", deleteProduct);
+priceButton.addEventListener("click", sendPrice);
 
 //Funções
 function addProduct(event) {
@@ -62,35 +66,53 @@ function deleteProduct(event) {
     productParent.remove();
   }
 
+  //mostra popup digitar preço
   if (productItem.classList[0] === "checked-product") {
-    //mostra popup digita preço
-    document
-      .querySelector(".insert-price-container")
-      .classList.add("show-price-area");
+    document.querySelector(".insert-price-container").classList.add("show-price-area");
     const productParent = productItem.parentElement;
     productParent.classList.toggle("completed");
- 
-    //primeiro digita, depois verifica...
-    const productPrice = priceInput.value.trim();
-    if(productPrice){
-      //lógica de digitar o preço
-      
-
-      //após apertar o botão, se estiver vazio
-      if (!productPrice) { // verificar se igual a zero
-        //document.querySelector(".show-price-area").classList.add("insert-price-container");
-        var emptyMessage = "O campo preço não pode estar vazio";
-        var element = document.querySelector(".modal-empty-text");
-        var message = document.querySelector(".modal-empty-text-message");
-        element.classList.add("show-modal-empty-text");
-        message.innerText = emptyMessage;
-      } else {
-        //lógica para atribuir preço ao produto e somar ao total...
-      }
-    }
-    
-    
   }
+}
+
+function sendPrice() {
+  const productPrice = priceInput.value.trim();
+  console.log(productPrice)
+
+  if (!productPrice) {
+    var emptyMessage = "O campo preço não pode estar vazio";
+    var element = document.querySelector(".modal-empty-text");
+    var message = document.querySelector(".modal-empty-text-message");
+    element.classList.add("show-modal-empty-text");
+    message.innerText = emptyMessage;
+  } else {
+    //lógica para atribuir preço ao produto e somar ao total...
+    document.querySelector(".insert-price-container").classList.remove("show-price-area");
+
+
+    var subResult = parseFloat(totalValueList) + parseFloat(productPrice);
+
+    totalFinalValueList += subResult;
+    document.querySelector("p").innerText = "R$ " + totalFinalValueList.toFixed(2);
+    //addLocalProductsPrice(totalFinalValueList);
+    //priceInput = 0;
+    console.log("Teste: " + testotalFinalValueListte);
+
+  }
+}
+
+// fazer um storeage para precos, verificar se é pra fazer em um método separado
+//verificar, está dando null
+function addLocalProductsPrice(addProductPriceLocal) {
+  let addProductsPrice;
+
+  if (localStorage.getItem("addProducts") === null) {
+    addProductsPrice = [];
+  } else {
+    addProductsPrice = JSON.parse(localStorage.getItem("addProductsPrice"));
+  }
+
+  addProductsPrice.push(addProductPriceLocal);
+  localStorage.setItem("addProductsPrice", JSON.stringify(addProductsPrice));
 }
 
 function addLocalProducts(addProductLocal) {
