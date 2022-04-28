@@ -6,7 +6,10 @@ const priceButton = document.querySelector(".price-button");
 var totalValue = document.querySelector("p");
 
 var productArray = [];
-var productObj = {}
+productObj = {
+  productName: "",
+  value: "",
+};
 //####################################################################################
 
 var initialValue = parseFloat(0);
@@ -53,15 +56,17 @@ function addProduct(event) {
     newProduct.classList.add("product-unit");
     productDiv.appendChild(newProduct);
 
-    addLocalProducts(productInput.value);
-
     productList.appendChild(productDiv);
 
-    productObj = {
-      productName: productInput.value,
-      value: priceInput.value,
-    }
-    console.log(productObj)
+    //productObj.productName = productName;
+    // productArray.forEach(element => {
+    //   element.productName = productName;
+      
+    // });
+    // productArray.push(productObj);
+    // addLocalProducts(productObj.productName);
+    
+    // console.log(productArray);
 
     productInput.value = "";
   }
@@ -69,23 +74,33 @@ function addProduct(event) {
 
 //####################################################################################
 
-
 function productInteration(event) {
   const productItem = event.target;
 
   if (productItem.classList[0] === "remove-product") {
     const productParent = productItem.parentElement;
     removeProductLocal(productParent);
+    removeProductLocalPrice(productParent);
     productParent.remove();
     const subtractionButton = document.querySelector(".remove-product");
     subtractionButton.addEventListener("click", subtractTotal);
     subtractTotal();
-
   }
   if (productItem.classList[0] === "checked-product") {
-    document.querySelector(".insert-price-container").classList.add("show-price-area");
+    document
+      .querySelector(".insert-price-container")
+      .classList.add("show-price-area");
     const productParent = productItem.parentElement;
     productParent.classList.toggle("completed");
+
+    //@@@@@@@@@@@@@@ TESTE @@@@@@@@@@@@@@@@
+    const productNameOnclick = document.querySelector(".checked-product");
+    productNameOnclick.addEventListener("click", teste);
+    function teste() {
+      var productDis = document.querySelector(".product-unit").value;
+      console.log(productDis);
+    }
+    teste();
   }
 }
 
@@ -101,20 +116,20 @@ function sendPrice() {
     element.classList.add("show-modal-empty-text");
     message.innerText = emptyMessage;
   } else {
-
-    
-
-    document.querySelector(".insert-price-container").classList.remove("show-price-area");
+    document
+      .querySelector(".insert-price-container")
+      .classList.remove("show-price-area");
     var subResult = parseFloat(totalValueList) + parseFloat(productPrice);
     totalFinalValueList += subResult;
-    document.querySelector("p").innerText = "R$ " + totalFinalValueList.toFixed(2);
+    document.querySelector("p").innerText =
+      "R$ " + totalFinalValueList.toFixed(2);
 
     //jogar dentro de um for? Usar Storeage?
     //testar dentro do remove, pensar em como deletar o item(index) certo na lista
     //verificar a soma...
     productObj.value = productPrice;
-
     productArray.push(productObj);
+    addLocalProductsPrice(productObj.value);
 
     console.log(productArray);
   }
@@ -123,11 +138,11 @@ function sendPrice() {
 //####################################################################################
 
 //Criar array de objetos de produtos
-function subtractTotal(){
+function subtractTotal() {
   const productPrice = priceInput.value.trim();
 
   var subResult = parseFloat(totalFinalValueList) - parseFloat(productPrice);
-  
+
   document.querySelector("p").innerText = "R$ " + subResult.toFixed(2);
   totalFinalValueList = 0;
 }
@@ -139,7 +154,7 @@ function subtractTotal(){
 function addLocalProductsPrice(addProductPriceLocal) {
   let addProductsPrice;
 
-  if (localStorage.getItem("addProducts") === null) {
+  if (localStorage.getItem("addProductsPrice") === null) {
     addProductsPrice = [];
   } else {
     addProductsPrice = JSON.parse(localStorage.getItem("addProductsPrice"));
@@ -200,6 +215,22 @@ function getProducts() {
 }
 
 //####################################################################################
+
+function removeProductLocalPrice(product) {
+  let addProductsPrice;
+
+  if (localStorage.getItem("addProductsPrice") === null) {
+    addProductsPrice = [];
+  } else {
+    addProductsPrice = JSON.parse(localStorage.getItem("addProductsPrice"));
+  }
+
+  const productIndex = product.children[0].innerText;
+
+  addProductsPrice.splice(addProductsPrice.indexOf(productIndex), 1);
+
+  localStorage.setItem("addProductsPrice", JSON.stringify(addProductsPrice));
+}
 
 function removeProductLocal(product) {
   let addProducts;
