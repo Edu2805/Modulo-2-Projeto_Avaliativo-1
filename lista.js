@@ -6,10 +6,7 @@ const priceButton = document.querySelector(".price-button");
 var totalValue = document.querySelector("p");
 
 var productArray = [];
-productObj = {
-  productName: "",
-  value: "",
-};
+var productObj = {};
 //####################################################################################
 
 var initialValue = parseFloat(0);
@@ -58,15 +55,13 @@ function addProduct(event) {
 
     productList.appendChild(productDiv);
 
-    //productObj.productName = productName;
-    // productArray.forEach(element => {
-    //   element.productName = productName;
-      
-    // });
-    // productArray.push(productObj);
-    // addLocalProducts(productObj.productName);
-    
-    // console.log(productArray);
+    productObj = {
+      productName: productInput.value,
+      value: priceInput.value,
+    };
+
+    addLocalProducts(productObj.productName);
+    console.log(productObj);
 
     productInput.value = "";
   }
@@ -128,6 +123,7 @@ function sendPrice() {
     //testar dentro do remove, pensar em como deletar o item(index) certo na lista
     //verificar a soma...
     productObj.value = productPrice;
+
     productArray.push(productObj);
     addLocalProductsPrice(productObj.value);
 
