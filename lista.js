@@ -3,10 +3,9 @@ const insertButton = document.querySelector(".product-button");
 const productList = document.querySelector(".products-list");
 const priceInput = document.querySelector("#price-input");
 const priceButton = document.querySelector(".price-button");
+const optionsList = document.querySelector(".options-list");
 var totalValue = document.querySelector("p");
 
-var productArray = [];
-var productObj = {};
 //####################################################################################
 
 var initialValue = parseFloat(0);
@@ -27,9 +26,9 @@ function addProduct(event) {
   event.preventDefault();
 
   const productDiv = document.createElement("div");
-  productDiv.classList.add("product");
 
   const checkBoxProduct = document.createElement("button");
+  productDiv.classList.add("product");
   checkBoxProduct.innerHTML = '<i class="fa-solid fa-check"></i>';
   checkBoxProduct.classList.add("checked-product");
   productDiv.appendChild(checkBoxProduct);
@@ -51,21 +50,17 @@ function addProduct(event) {
     const newProduct = document.createElement("li");
     newProduct.innerText = productInput.value;
     newProduct.classList.add("product-unit");
+
     productDiv.appendChild(newProduct);
-
     productList.appendChild(productDiv);
-
-    productObj = {
-      productName: productInput.value,
-      value: priceInput.value,
-    };
-
-    addLocalProducts(productObj.productName);
-    console.log(productObj);
+    product.description = productName;
+    addLocalProducts(product.description);
 
     productInput.value = "";
   }
 }
+
+function filterProducts() {}
 
 //####################################################################################
 
@@ -82,26 +77,16 @@ function productInteration(event) {
     subtractTotal();
   }
   if (productItem.classList[0] === "checked-product") {
-    document
-      .querySelector(".insert-price-container")
-      .classList.add("show-price-area");
+    document.querySelector(".insert-price-container").classList.add("show-price-area");
     const productParent = productItem.parentElement;
     productParent.classList.toggle("completed");
-
-    //@@@@@@@@@@@@@@ TESTE @@@@@@@@@@@@@@@@
-    const productNameOnclick = document.querySelector(".checked-product");
-    productNameOnclick.addEventListener("click", teste);
-    function teste() {
-      var productDis = document.querySelector(".product-unit").value;
-      console.log(productDis);
-    }
-    teste();
   }
 }
 
 //####################################################################################
 
-function sendPrice() {
+function sendPrice(event) {
+  event.preventDefault();
   const productPrice = priceInput.value.trim();
 
   if (!productPrice) {
@@ -118,16 +103,6 @@ function sendPrice() {
     totalFinalValueList += subResult;
     document.querySelector("p").innerText =
       "R$ " + totalFinalValueList.toFixed(2);
-
-    //jogar dentro de um for? Usar Storeage?
-    //testar dentro do remove, pensar em como deletar o item(index) certo na lista
-    //verificar a soma...
-    productObj.value = productPrice;
-
-    productArray.push(productObj);
-    addLocalProductsPrice(productObj.value);
-
-    console.log(productArray);
   }
 }
 
@@ -145,8 +120,6 @@ function subtractTotal() {
 
 //####################################################################################
 
-// fazer um storeage para precos, verificar se é pra fazer em um método separado
-//verificar, está dando null
 function addLocalProductsPrice(addProductPriceLocal) {
   let addProductsPrice;
 
@@ -185,29 +158,6 @@ function getProducts() {
   } else {
     addProducts = JSON.parse(localStorage.getItem("addProducts"));
   }
-
-  addProducts.forEach((product) => {
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("product");
-
-    const checkBoxProduct = document.createElement("button");
-    checkBoxProduct.innerHTML = '<i class="fa-solid fa-check"></i>';
-    checkBoxProduct.classList.add("checked-product");
-    productDiv.appendChild(checkBoxProduct);
-
-    const removeProduct = document.createElement("button");
-    removeProduct.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    removeProduct.classList.add("remove-product");
-    productDiv.appendChild(removeProduct);
-
-    const newProduct = document.createElement("li");
-    newProduct.innerText = product;
-    newProduct.classList.add("product-unit");
-
-    productDiv.appendChild(newProduct);
-
-    productList.appendChild(productDiv);
-  });
 }
 
 //####################################################################################

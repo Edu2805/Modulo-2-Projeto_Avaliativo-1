@@ -93,6 +93,22 @@ p{
     margin-top: 29px;
 }
 
+.options-list {
+
+    display: inline-flex;
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 20%;
+    height: 20%;
+    margin-top: 5%;
+    margin-left: 30%;
+}
+
+.products-list-header{
+    margin-top: 1%;
+    display: flex;
+}
+
 .products-list{
     background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
     border-radius: 10px;
@@ -139,7 +155,11 @@ p{
 
 }
 
-.product-unit{
+#product-unit-price{
+    padding: 2px;
+}
+
+.product-unit {
     padding: 2px;
 }
 
