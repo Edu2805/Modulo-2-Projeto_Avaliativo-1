@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.css">
+    <title>Lista de compras</title>
+  </head>
+  <body>
+    <header>
+      <h1>Lista de Compras</h1>
+    </header>
+
+    <main>
+      <div class="sub-title">
+        <h2>Inserir item na lista</h2>
+      </div>
+      <div class="product-name-area">
+        <div class="product-name-input">
+          <input
+            type="text"
+            id="product-name"
+            maxlength="40"
+            placeholder="Digite o nome do produto aqui"
+          />
+          <button class="product-button" onclick="product.save()">Inserir</button>
+        </div>
+      </div>
+      <div class="product-content-area">
+        <div class="product-content-status-area">
+            <h3>Lista de compras</h3>
+          <select name="product-status" class="product-content-status">
+            <option value="todos-os-itens">Todos os itens</option>
+            <option value="comprados">Comprados</option>
+            <option value="pendentes">Pendentes</option>
+          </select>
+        </div>
+        <table class="product-content-area-table">
+          <thead>
+              <th></th>
+              <th class="th-product">Produto</th>
+              <th>Preço</th>
+          </thead>
+          <tbody id="tbody">
+            
+          </tbody>
+        </table>
+      </div>
+      <div class="insert-price-container">
+        <div class="insert-price">
+          <span class="price-span"></span>
+          <h2 class="title-price"></h2>
+          <input type="number" id="price-input" maxlength="10" placeholder="Digite o preço" pattern="[0-9]+$"/>
+        <button class="price-button" type="submit">Inserir</button>
+        </div>
+      </div>
+      <div class="modal-empty-text">
+        <div class="model-content-empty-text">
+          <span onclick="product.hidenModalAdvice()" class="empty-adv">&times;</span>
+          <h2 class="modal-empty-text-message"></h2>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
