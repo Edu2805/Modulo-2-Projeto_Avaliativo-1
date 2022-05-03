@@ -81,16 +81,15 @@ class Product {
   }
 
   validationPriceArea(product) {
-
-    const productInputPrice = document.querySelector("#product-name");
+    const productInputPrice = document.querySelector("#price-input");
     const productPrice = productInputPrice.value.trim();
 
   if (!productPrice) {
-    var emptyMessage = "O campo preço não pode estar vazio";
-    var element = document.querySelector(".modal-empty-text");
-    var message = document.querySelector(".modal-empty-text-message");
-    element.classList.add("show-modal-empty-text");
-    message.innerText = emptyMessage;
+    // var emptyMessage = "O campo preço não pode estar vazio";
+    // var element = document.querySelector(".modal-empty-text");
+    // var message = document.querySelector(".modal-empty-text-message");
+    // element.classList.add("show-modal-empty-text");
+    // message.innerText = emptyMessage;
 
       return false;
     } else {
@@ -127,8 +126,8 @@ class Product {
     
     for (let i = 0; i < this.arrayProducts.length; i++) {
 
-      if(this.validationPriceArea(product.price)){
-        
+      if(!this.validationPriceArea(product.price)){
+        console.log("entrou");
         var emptyMessage = "O campo preço não pode estar vazio";
         var element = document.querySelector(".modal-empty-text");
         var message = document.querySelector(".modal-empty-text-message");
