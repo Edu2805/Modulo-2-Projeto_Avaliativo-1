@@ -213,10 +213,10 @@ p{
     pointer-events: none;
 } */
 
-/* .completed{
+.completed{
     text-decoration: line-through;
     opacity: 0.5;
-} */
+}
 
 .modal-empty-text{
     position: fixed;
