@@ -11,6 +11,7 @@ class Product {
 
     if (this.validationArea(product)) {
       this.addProduct(product);
+      this.addProductLocalStoreage(product);
     }
 
     this.listProducts();
@@ -20,6 +21,7 @@ class Product {
     this.arrayProducts.push(product);
     this.id++;
     this.price;
+    
   }
 
   listProducts() {
@@ -44,13 +46,14 @@ class Product {
       insertTdProductName.classList.add("product");
       checkBoxProduct.innerHTML = '<i class="fa-solid fa-check"></i>';
       checkBoxProduct.classList.add("checked-product");
-      checkBoxProduct.setAttribute("onclick", "product.checkedProductLine("+ JSON.stringify(this.arrayProducts[i]) +")");
+      checkBoxProduct.addEventListener("click", this.checkedProduc);
+      checkBoxProduct.setAttribute("onclick", "product.editPrice(" + JSON.stringify(this.arrayProducts[i]) + ")");
       insertTdProductName.appendChild(checkBoxProduct);
 
       let removeProductLine = document.createElement("button");
       removeProductLine.innerHTML = '<i class="fa-solid fa-xmark"></i>';
       removeProductLine.classList.add("remove-product");
-      removeProductLine.setAttribute("onclick", "product.removeProduct("+ this.arrayProducts[i].id +")");
+      removeProductLine.setAttribute("onclick","product.removeProduct(" + this.arrayProducts[i].id + ")");
       insertTdProductName.appendChild(removeProductLine);
     }
   }
@@ -59,8 +62,8 @@ class Product {
     let productItem = {};
 
     productItem.id = this.id;
-    //    productItem.price =  document.getElementById("price-input").value;
-    productItem.price = this.price;
+
+    productItem.price = this.price
     productItem.name = document.getElementById("product-name").value;
     return productItem;
   }
@@ -69,12 +72,12 @@ class Product {
     const productInput = document.querySelector("#product-name");
     const productName = productInput.value.trim();
 
-  if (!productName) {
-    var emptyMessage = "O campo produto não pode estar vazio";
-    var element = document.querySelector(".modal-empty-text");
-    var message = document.querySelector(".modal-empty-text-message");
-    element.classList.add("show-modal-empty-text");
-    message.innerText = emptyMessage;
+    if (!productName) {
+      var emptyMessage = "O campo produto não pode estar vazio";
+      var element = document.querySelector(".modal-empty-text");
+      var message = document.querySelector(".modal-empty-text-message");
+      element.classList.add("show-modal-empty-text");
+      message.innerText = emptyMessage;
 
       return false;
     } else {
@@ -82,97 +85,81 @@ class Product {
     }
   }
 
-  validationPriceArea(event) {
-
-    //event.preventDefault();
-    const priceButton = document.querySelector(".price-button");
-    priceButton.addEventListener("click", this.checkedProductLine);
-
-    //const productPrice = priceInput.value.trim();
-
-    const productInputPrice = document.querySelector("#price-input");
-    const productPrice = productInputPrice.value.trim();
-
-  if (!productPrice) {
-    // var emptyMessage = "O campo preço não pode estar vazio";
-    // var element = document.querySelector(".modal-empty-text");
-    // var message = document.querySelector(".modal-empty-text-message");
-    // element.classList.add("show-modal-empty-text");
-    // message.innerText = emptyMessage;
-
-      return false;
-    } else {
-      return true;
-    }
-  }
+  validationPriceArea(event) { }
 
   hidenModalAdvice() {
     var element = document.querySelector(".modal-empty-text");
     element.classList.remove("show-modal-empty-text");
   }
 
-  showPriceArea(){
-
-  }
-
   removeProduct(index) {
-    
     let tbody = document.getElementById("tbody");
 
     for (let i = 0; i < this.arrayProducts.length; i++) {
-      if(this.arrayProducts[i].id === index){
+      if (this.arrayProducts[i].id === index) {
         this.arrayProducts.splice(i, 1);
         tbody.deleteRow(i);
       }
     }
   }
 
-  checkedProductLine(index){
-    
-    //document.querySelector(".product-price").value = index.price;
-    // var element = document.querySelector(".insert-price-container");
+  editPrice(setPrice) {
+    const inputPrice = document.querySelector(".price-button");
     document.querySelector(".insert-price-container").classList.add("show-price-area");
-    //const productDiv = document.createElement("div");
-    // element.classList.add("show-price-area");
-    let product = this.getItens();
 
-    document.querySelector(".product").classList.add("completed");
+    for (let i = 0; i < document.querySelectorAll(".product-id").length; i++) {
 
-    const priceButton = document.querySelector(".price-button");
-    priceButton.addEventListener("click", this.hidePriceArea);
+      if (document.querySelectorAll(".product-id")[i].innerHTML === setPrice.id.toString()) {
+
+        inputPrice.addEventListener("click", function () {
+
+          //if (document.querySelectorAll(".product-id")[i].innerHTML == setPrice.id) {
+            
+            document.querySelectorAll(".product-price")[i].innerText = document.getElementById("price-input").value;
+
+            setPrice.price = document.getElementById("price-input").value;
+          //}
+
+          document.querySelector(".insert-price-container").classList.remove("show-price-area");
+          console.log(setPrice);
+          
+        })
+      }
+       
+    }  
     
-    for (let i = 0; i < this.arrayProducts.length; i++) {
+  }
 
-      // if(this.validationPriceArea(product.price)){
-        
-      //   console.log("entrou");
-      //   var emptyMessage = "O campo preço não pode estar vazio";
-      //   var element = document.querySelector(".modal-empty-text");
-      //   var message = document.querySelector(".modal-empty-text-message");
-      //   element.classList.add("show-modal-empty-text");
-      //   message.innerText = emptyMessage;
-        
-      // } else {
+  checkedProduc(event) {
+    const productItem = event.target;
 
-      //   console.log("No else, depois de entrar: " + product.price);
-      //   if(this.arrayProducts[i].id === index){
-        
-      //     console.log(this.arrayProducts[i].name);
-      //   }
-      // }
+    if (productItem.classList[0] === "checked-product") {
+      const productParent = productItem.parentElement;
+      productParent.classList.toggle("completed");
     }
   }
 
-  hidePriceArea(event){
-    event.preventDefault();
+  hidePriceArea(event) {
+    // event.preventDefault();
 
-    var productPrice = document.getElementById("price-input").value;
-    console.log(productPrice)
-    document.querySelector(".product-price").innerText = productPrice;
-    
-    document.querySelector(".insert-price-container").classList.remove("show-price-area");
-    
+    // console.log(event);
+    // var productPrice = document.getElementById("price-input").value;
+    // console.log(productPrice);
+    //document.querySelector(".product-price").innerText = productPrice;
   }
+
+  addProductLocalStoreage(addProductLocal){
+    let addProducts;
+
+    if (localStorage.getItem("addProducts") === null) {
+      addProducts = [];
+    } else {
+      addProducts = JSON.parse(localStorage.getItem("addProducts"));
+    }
+
+    addProducts.push(addProductLocal);
+    localStorage.setItem("addProducts", JSON.stringify(addProducts));
+    }
 }
 
 var product = new Product();
