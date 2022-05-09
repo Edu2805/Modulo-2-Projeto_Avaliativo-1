@@ -212,4 +212,3 @@ function darkMode(){
   productList.classList.toggle("products-list-dark");
   darkModeButton.classList.toggle("dark-mode-button-white");
 }
-
