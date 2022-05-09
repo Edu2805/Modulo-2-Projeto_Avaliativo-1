@@ -12,16 +12,6 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
 }
 
-th.th-product{
-    padding-left: 2%;
-    padding-right: 12%;
-    text-align: left;
-    font-size: 100%;
-    font-weight: bold;
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
 h4{
     text-align: center;
     font-size: 30px;
@@ -30,7 +20,11 @@ h4{
 }
 
 body{
-    background-image: linear-gradient(to left, rgb(134, 194, 134), rgb(201, 223, 201));
+    background-image: linear-gradient(to left, rgb(134, 194, 134), rgb(173, 209, 173));
+}
+
+.dark-mode-body{
+    background-image: linear-gradient(to left, rgb(4, 32, 4), rgb(13, 52, 13));
 }
 
 .product-button {
@@ -55,8 +49,54 @@ body{
     box-shadow:none;
 }
 
-#product-name{
-    width: 40%;
+.dark-mode-button{
+    padding: 8px 50px 8px 50px;
+    font-size: 1rem;
+    border: none;
+    background: gray;
+    border-radius: 10px;
+    color: white;
+    box-shadow:0 5px 0 #006000;
+    cursor: pointer;
+    color: black;
+}
+
+.dark-mode-button:hover{
+    background:#006000;
+    box-shadow:0 5px 0 #003f00;
+}
+
+.dark-mode-button:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
+.dark-mode-button-white{
+    padding: 8px 50px 8px 50px;
+    font-size: 1rem;
+    border: none;
+    background: white;
+    border-radius: 10px;
+    color: white;
+    box-shadow:0 5px 0 #006000;
+    cursor: pointer;
+    color: black;
+}
+
+.dark-mode-button-white:hover{
+    background:#006000;
+    box-shadow:0 5px 0 #003f00;
+}
+
+.dark-mode-button-white:active{
+    position:relative;
+    top:5px;
+    box-shadow:none;
+}
+
+#product-input{
+    width: 60%;
     border: 2px;
     border-style: solid;
     border-color: rgb(49, 49, 183);
@@ -67,37 +107,22 @@ body{
     text-align: left;
 }
 
-.product-name-input{
+form{
     text-align: center;
 }
 
-h3{
-    
-    margin: 5%;
-    width: 200%;
-
+h3#title-list{
+    margin: 30px;
     text-align: left;
-    font-size: 200%;
-    font-weight: bold;
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-.product-content-area-table{
-    width: 70%;
-    padding-left: 2%;
-    padding-right: 12%;
-    text-align: left;
-    font-size: 150%;
-    font-weight: bold;
+    font-size: 30px;
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 div{
-
+    display: inline-block;
     margin-top: 50px;
-} 
+}
 
 p{
     text-align: center;
@@ -108,58 +133,73 @@ p{
 
 .total-list{
 
-    display: block;
     backdrop-filter: blur(8px);
-    /* vertical-align: top; */
+    vertical-align: top;
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 30%;
+    height: 400px;
+    margin-left: -40px;
+    margin-top: 29px;
+}
+
+.total-list-dark{
+
+    background-color: gray;
+    backdrop-filter: blur(8px);
+    vertical-align: top;
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
     width: 30%;
     height: 300px;
-    margin-left: 68%;
-    margin-top: -47%;
+    margin-left: -40px;
+    margin-top: 29px;
 }
 
-.product-content-status {
+.options-list {
+
     display: inline-flex;
-    margin-right: 5%;
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 20%;
     height: 20%;
     margin-top: 5%;
     margin-left: 30%;
 }
 
-.product-content-status-area{
-    margin-top: 5%;
-
-}
-
-.product-content-status-area{
+.products-list-header{
     margin-top: 1%;
     display: flex;
 }
 
-.product-content-area{
+.products-list{
     background-image: linear-gradient(to left, rgb(56, 63, 152), rgb(113, 117, 175));
     border-radius: 10px;
     box-shadow: 0 0 1em rgb(57, 49, 6);
     width: 60%;
     height: 600px;
-    margin-left: 10%;
-    margin-top: 4%;
+    margin-left: 150px;
 }
 
-/* .product-check-box{
+.products-list-dark{
+    background-image: linear-gradient(to left, rgb(3, 5, 30), rgb(21, 25, 71));
+    border-radius: 10px;
+    box-shadow: 0 0 1em rgb(57, 49, 6);
+    width: 60%;
+    height: 600px;
+    margin-left: 150px;
+}
+
+.product-check-box{
     min-width: 30%;
     margin: 30px;
     font-size: 25px;
     color: rgb(115, 198, 195);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-} */
+}
 
 .checked-product{
 
-    margin-left: 5px;
     background-color: rgb(72, 179, 72);
     padding: 8px;
     cursor: pointer;
@@ -180,38 +220,24 @@ p{
 
 .product{
     list-style: none;
-    margin-top: 10px;
-    margin-left: 10px;
+    margin: 30px;
     color: rgb(169, 203, 206);
     font-size: 25px;
     display: flex;
 
 }
 
-.product-price{
-    list-style: none;
-    margin-top: 10px;
-    margin-left: 10px;
-    color: rgb(169, 203, 206);
-    font-size: 25px;
-}
-
-.product-id{
-    visibility: hidden;
-
-}
-
-/* #product-unit-price{
+#product-unit-price{
     padding: 2px;
-} */
+}
 
 .product-unit {
     padding: 2px;
 }
 
-/* .fa-check, .fa-xmark{
+.fa-check, .fa-xmark{
     pointer-events: none;
-} */
+}
 
 .completed{
     text-decoration: line-through;
@@ -279,6 +305,8 @@ p{
     font-size: 20px;
 }
 
+
+
 .insert-price-container{
     position: fixed;
     top: 0;
@@ -334,21 +362,12 @@ p{
 #price-input{
     position: relative;
     margin: auto;
-    border-radius: 5px;
-}
-
-.title-price{
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
 input[type=number]::-webkit-inner-spin-button { 
     -webkit-appearance: none;
     
 }
-
 input[type=number] { 
    -moz-appearance: textfield;
    appearance: textfield;
@@ -393,6 +412,6 @@ input[type=number] {
     transition: visibility 0.25s ease-in-out, transform 0.25s ease-in-out;
 }
 
-/* .modal-empty-text-message{
+.modal-empty-text-message{
     font-size: 20px;
-} */
+}
